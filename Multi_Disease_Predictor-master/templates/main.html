@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="KVG Disease Predictor">
+  <meta name="author" content="VENU GOPAL KADAMBA">
+  <meta name="og:image" content="static/logo1.png">
+  <meta name="Keywords" content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  <title>Disease Predictor</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="https://kit.fontawesome.com/8a2bebc820.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://kit.fontawesome.com/8a2bebc820.css" crossorigin="anonymous">
+   
+
+  <link rel="icon" href="{{ url_for('static', filename = 'logo1.png') }}" type="image/icon type">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i class='fa-solid fa-book-medical'></i>
+      <span class="logo_name">Predictivease</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="{{ url_for('home') }}">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="{{ url_for('home') }}">Home</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a>
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Individual Diseases</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name">Individual Diseases</a></li>
+          <li><a href="{{ url_for('heartPage') }}">Heart Diseases</a></li>
+          <li><a href="{{ url_for('diabetesPage') }}">Diabetes</a></li>
+          <li><a href="home/individual/parkinson/parkinson.html">Parkinson's Diseases</a></li>
+          <li><a href="{{ url_for('malariaPage') }}">Malaria</a></li>
+          <li><a href="{{ url_for('pneumoniaPage') }}">Pneumonia</a></li>
+          <li><a href="{{ url_for('cancerPage') }}">Breast Cancer</a></li>
+          <li><a href="{{ url_for('liverPage') }}">Liver Disease</a></li>
+          <li><a href="{{ url_for('kidneyPage') }}">Kidney</a></li>
+        </ul>
+      </li>
+	  
+      
+      <li>
+        <a href="home/symptoms/symptoms.html">
+          <i class='bx bx-pie-chart-alt-2' ></i>
+          <span class="link_name">Symptoms Based Prediction</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="home/symptoms/symptoms.html">Symptoms Based Prediction</a></li>
+        </ul>
+      </li>
+<!-- 	  
+	  <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Posts</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Posts</a></li>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Login Form</a></li>
+          <li><a href="#">Card Design</a></li>
+        </ul>
+      </li> -->
+      <li>
+        <a href="#">
+          <i class='bx bx-compass' ></i>
+          <span class="link_name">Gallery</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Gallery</a></li>
+        </ul>
+      </li>
+      <!-- <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-plug' ></i>
+            <span class="link_name">Plugins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Plugins</a></li>
+          <li><a href="#">UI Face</a></li>
+          <li><a href="#">Pigments</a></li>
+          <li><a href="#">Box Icons</a></li>
+        </ul>
+      </li> -->
+      <li>
+        <a href="{{ url_for('aboutPage') }}">
+          <i class='fa-solid fa-users' ></i>
+          <span class="link_name">About Us</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="{{ url_for('aboutPage') }}">About Us</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-history'></i>
+          <span class="link_name">History</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">History</a></li>
+        </ul>
+      </li>
+      <!-- <li>
+        <a href="#">
+          <i class='bx bx-cog' ></i>
+          <span class="link_name">Setting</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Setting</a></li>
+        </ul>
+      </li> -->
+      <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <!--<img src="image/profile.jpg" alt="profileImg">-->
+      </div>
+      <!-- <div class="name-job">
+        <div class="profile_name">Prem Shahi</div>
+        <div class="job">Web Desginer</div>
+      </div>
+      <i class='bx bx-log-out' ></i>
+    </div> -->
+  </li>
+</ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      <span class="text">
+        Predictivease</span>
+    </div>
+  </section>
+  
+  
+
+
+  <!-- Loading Button -->
+
+
+
+
+  <!-- End of loading -->
+
+  
+
+<!-- 
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo.png') }} " height="60px" width="275px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item active">
+               <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+             </li>
+             <li class="nav-item active">
+               <a class="nav-link" href="{{ url_for('diabetesPage') }}">Diabetes</a>
+             </li>
+             <li class="nav-item active">
+               <a class="nav-link" href="{{ url_for('cancerPage') }}">Breast Cancer</a>
+             </li>
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('heartPage') }}">Heart</a>
+             </li>
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('kidneyPage') }}">Kidney</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('liverPage') }}">Liver</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('malariaPage') }}">Malaria</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('pneumoniaPage') }}">Pneumonia</a>
+              </li>
+           </ul>
+         </div>
+       </nav> -->
+	<!-- <br>
+<br>
+<br>
+<br> -->
+<main>
+	<div class="container-fluid" style="left:100px; top:0%; margin-bottom: 20px;">
+	{% block content %}
+
+	{% endblock %}
+    </div>
+  </main>
+
+  <div class="spinner-box">
+    <div class="blue-orbit leo">
+    </div>
+  
+    <div class="green-orbit leo">
+    </div>
+    
+    <div class="red-orbit leo">
+    </div>
+    
+    <div class="white-orbit w1 leo">
+    </div><div class="white-orbit w2 leo">
+    </div><div class="white-orbit w3 leo">
+    </div>
+  </div>
+  <script src="../static/css/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
